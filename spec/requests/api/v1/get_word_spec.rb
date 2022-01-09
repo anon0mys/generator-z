@@ -56,7 +56,7 @@ describe 'Api::V1::Words' do
       end
 
       it 'can conjugate a verb to present progressive' do
-        get '/api/v1/word?type=verb&conjugation=present_progressive'
+        get '/api/v1/word?type=verb&conjugation=ing_form'
 
         expect(response).to have_http_status(:success)
       end

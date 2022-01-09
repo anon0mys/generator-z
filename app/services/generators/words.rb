@@ -15,7 +15,7 @@ module Generators::Words
 
   def word
     type = @type || ALLOWED_TYPES.sample
-    conjugation = @conjugation || 'base'
+    conjugation = @options[:conjugation] || 'base'
     self.send(type, conjugation)
   end
 

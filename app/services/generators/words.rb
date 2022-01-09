@@ -1,6 +1,6 @@
 module Generators::Words
   ALLOWED_TYPES = %w[noun adverb adjective verb]
-  ALLOWED_CONJUGATIONS = %w[base past past_participle simple_present ing_form]
+  ALLOWED_CONJUGATIONS = %w[base past past_participle simple_present ing_form plural]
   ADVERBS =%w[
     boldly bravely brightly cheerfully deftly devotedly eagerly elegantly 
     faithfully fortunately gleefully gracefully happily honestly innocently
@@ -16,20 +16,21 @@ module Generators::Words
   def word
     type = @type || ALLOWED_TYPES.sample
     conjugation = @conjugation || 'base'
-    return verb(conjugation) if type == 'verb'
-    self.send(type)
+    self.send(type, conjugation)
   end
 
-  def noun
+  def noun(conjugation)
     klass, methods = Generators::Things::THINGS.to_a.sample
-    klass.send(methods.sample)
+    result = klass.send(methods.sample)
+    result.pluralize if conjugation == 'plural'
+    result
   end
 
-  def adverb
+  def adverb(_)
     ADVERBS.sample
   end
 
-  def adjective
+  def adjective(_)
     methods = [:positive, :negative]
     Faker::Adjective.send(methods.sample)
   end

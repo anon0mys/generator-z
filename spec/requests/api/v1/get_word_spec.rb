@@ -61,5 +61,13 @@ describe 'Api::V1::Words' do
         expect(response).to have_http_status(:success)
       end
     end
+
+    context 'when type is noun' do
+      it 'can pluralize a noun' do
+        get '/api/v1/word?type=noun&conjugation=plural'
+
+        expect(response).to have_http_status(:success)
+      end
+    end
   end
 end

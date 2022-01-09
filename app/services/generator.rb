@@ -1,19 +1,11 @@
 class Generator
-  def initialize(category)
-    @faker = get_faker_class(category)
-  end
+  include Generators::Locations
+  include Generators::Names
+  include Generators::Things
+  include Generators::Words
 
-  def name
-    @faker.name
-  end
-
-  private
-
-  def get_faker_class(category)
-    types = {
-      'name' => Faker::Name,
-      'superhero' => Faker::Superhero
-    }
-    types[category]
+  def initialize(config)
+    @type = config.delete(:type)
+    @options = config
   end
 end

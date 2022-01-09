@@ -11,7 +11,7 @@ describe 'Api::V1::Names' do
 
   context 'GET /api/v1/name?category=' do
     it 'returns a superhero name when category is superhero' do
-      get '/api/v1/name?category=superhero'
+      get '/api/v1/name?type=superhero'
 
       expect(response).to have_http_status(:success)
     end

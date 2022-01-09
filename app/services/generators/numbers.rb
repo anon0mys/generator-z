@@ -5,7 +5,7 @@ module Generators::Numbers
     if @options[:from] || @options[:to]
       return between(@options[:from], @options[:to])
     end
-    Faker::Numbers.send(@type || 'number')
+    Faker::Number.send(@type || 'number')
   end
 
   private
@@ -17,6 +17,6 @@ module Generators::Numbers
       from.to_f
       to.to_f
     end
-    Faker::Numbers.between(from: from, to: to)
+    Faker::Number.between(from: from, to: to)
   end
 end

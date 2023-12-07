@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'faker'
 gem 'rack-cors'
+gem 'faraday'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

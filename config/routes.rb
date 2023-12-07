@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'number', to: 'numbers#show'
       get 'thing', to: 'things#show'
       get 'word', to: 'words#show'
+      get 'superhero', to: 'superheroes#show'
     end
   end
 end

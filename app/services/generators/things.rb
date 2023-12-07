@@ -1,5 +1,5 @@
 module Generators::Things
-  ALLOWED_TYPES = %w[any animal liquid body_part]
+  ALLOWED_TYPES = %w[any animal liquid body_part tool]
   THINGS = {
     Faker::Beer => [:style],
     Faker::Construction => [:heavy_equipment, :material],
@@ -20,6 +20,10 @@ module Generators::Things
   def any
     klass, methods = THINGS.to_a.sample
     klass.send(methods.sample)
+  end
+
+  def tool
+    Faker::Science.tool
   end
 
   def animal
